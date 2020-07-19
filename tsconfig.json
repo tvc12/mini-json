@@ -8,7 +8,7 @@
     "allowSyntheticDefaultImports": true,
     "baseUrl": ".",
     "outDir": "./bin",
-    "types": ["mocha", "chai"],
+    "types": ["mocha"],
     "lib": ["esnext", "DOM"]
   },
   "include": ["src/**/*.ts"],

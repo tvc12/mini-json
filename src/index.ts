@@ -22,7 +22,7 @@ abstract class MiniJson {
     this.serializeKeyTransform = transform;
   }
 
-  static seserializeKeysFrom(transform: (key: string) => string): void {
+  static deserializeKeysFrom(transform: (key: string) => string): void {
     this.deserializeKeyTransform = transform;
   }
 

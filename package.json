@@ -12,6 +12,7 @@
     "type": "git",
     "url": "git+https://github.com/tvc12/mini-json.git"
   },
+  "publishConfig": { "registry": "https://npm.pkg.github.com/" },
   "keywords": [
     "mini-json",
     "json"

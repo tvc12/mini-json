@@ -14,17 +14,17 @@ const snakeCase = (value: string): string => {
   return value.replace(/[A-Z]/g, letter => `_${letter.toLowerCase()}`);
 };
 
-type TransformKey = (key: string) => string;
+type KeyTransform = (key: string) => string;
 
 abstract class MiniJson {
-  private static serializeKeyTransform: TransformKey = snakeCase;
-  private static deserializeKeyTransform: TransformKey = camelCase;
+  private static serializeKeyTransform: KeyTransform = snakeCase;
+  private static deserializeKeyTransform: KeyTransform = camelCase;
 
-  static serializeKeysTo(transform: TransformKey): void {
+  static serializeKeysTo(transform: KeyTransform): void {
     this.serializeKeyTransform = transform;
   }
 
-  static deserializeKeysFrom(transform: TransformKey): void {
+  static deserializeKeysFrom(transform: KeyTransform): void {
     this.deserializeKeyTransform = transform;
   }
 
@@ -48,18 +48,12 @@ abstract class MiniJson {
     }
   }
 
-  static toJson(
-    value: any,
-    keyTransform?: TransformKey
-  ): string {
+  static toJson(value: any, keyTransform?: KeyTransform): string {
     const transform = keyTransform || this.serializeKeyTransform;
     return JSON.stringify(this.convertKeys<any>(value, transform));
   }
 
-  static fromJson<T>(
-    data: string | object,
-    keyTransform?: TransformKey
-  ): T {
+  static fromJson<T>(data: string | object, keyTransform?: KeyTransform): T {
     const transform = keyTransform || this.deserializeKeyTransform;
 
     if (typeof data === 'string') {
@@ -71,4 +65,5 @@ abstract class MiniJson {
   }
 }
 
+export { KeyTransform };
 export default MiniJson;

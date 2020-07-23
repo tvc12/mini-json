@@ -1,5 +1,5 @@
 {
-  "name": "mini-json",
+  "name": "@tvc12/mini-json",
   "version": "1.0.0",
   "description": "Mini json parser with typescript",
   "main": "bin/index.js",
